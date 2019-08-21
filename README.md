@@ -27,7 +27,12 @@ Filtered output is segmented. Segmentation divides the scene into plane and obje
  maxIterations value was obtained by doing a couple of trails with different values, value that gives best result was choosen. 
  
  ## Clustering
- Clustering helps in identifying different objects in the scene. Euclidean Clustering mechanism was implemented. Euclidean Clustering uses KDTree , all the points in the cloud are used to form a KDTree of 3-Dimensions.Following steps are performed for realizing Euclidean clustering mechanism. 
+ Clustering helps in identifying different objects in the scene. Euclidean Clustering mechanism was implemented. Euclidean Clustering uses KDTree , all the points in the cloud are used to form a 3-Dimensional KDTree. After forming KDTree a point is taken from the cloud and all the points that are within a distance to this point are identified, each of the identified points is used and its adjacent points that are with in a distance are identified this process is repeated untill there no points that satisfy the distance criteria are left,all the identified points form a cluster, after that a new point that is not processed is picked and the process is left. All the clusters with no of points with in (minSize, maxSize) are retained rest are discarded. Each of these clusters form a distinct object. 
+
+## Bounding Box 
+ For each of the cluster a bounding box is fitted. To fit a box min and max coordinates of a cluster are used. Using renderbox function boxes are drawn. 
+ 
+## Output
  
    
     
